@@ -5,11 +5,6 @@ abstract class GamesEvent extends Equatable {
 }
 
 class GetGamesEvent extends GamesEvent {
-
-  final int page;
-
-  const GetGamesEvent({this.page = Constants.firstPageKey});
-
   @override
   List<Object?> get props => [];
 }
