@@ -26,7 +26,7 @@ class Params extends Equatable {
         page = page ?? 1,
         pageSize = pageSize ?? 20,
         platforms = platforms ?? 187,
-        date = date ?? "${getCurrentDateString()},${getOneYearAgoDateString()}",
+        date = date ?? "${getOneYearAgoDateString()},${getCurrentDateString()}",
         ordering = ordering ?? "-released";
 
   @override

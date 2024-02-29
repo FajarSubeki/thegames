@@ -18,7 +18,7 @@ class AppRoute {
     appRouter
       ..registerRoute(
         Routes.home,
-            (_, __) => const HomePage(),
+            (_, __) => HomePage(),
       )
       ..registerRoute(
         Routes.gameDetail,
