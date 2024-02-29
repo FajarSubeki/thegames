@@ -1,3 +1,4 @@
+import 'package:thegames/config/route/app_router.dart';
 import 'package:thegames/core/network/network.dart';
 import 'package:thegames/feature/game/data/datasource/game_detail_remote_data_source.dart';
 import 'package:thegames/feature/game/data/datasource/game_remote_data_source.dart';
@@ -13,6 +14,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'feature/game/presentation/bloc/game_bloc/game_bloc.dart';
 
 final sl = GetIt.instance;
+GetIt serviceLocator = GetIt.instance;
 
 Future<void> init() async {
   initFeatures();
@@ -46,6 +48,8 @@ void initFeatures() {
 
 void initCore() {
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
+  sl.registerLazySingleton(() => AppRouter());
+
 }
 
 Future<void> initExternal() async {

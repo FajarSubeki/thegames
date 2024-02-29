@@ -8,7 +8,7 @@ class Routes {
   const Routes._();
 
   static const home = RouteDefinition(name: '/');
-  static const game = RouteDefinition(name: '/detail_game');
+  static const gameDetail = RouteDefinition(name: '/detail_game');
 }
 
 class AppRoute {
@@ -21,7 +21,7 @@ class AppRoute {
             (_, __) => const HomePage(),
       )
       ..registerRoute(
-        Routes.game,
+        Routes.gameDetail,
             (_, information) {
           final gameId = information.argument as int;
           return GameDetailPage(gameId: gameId);
