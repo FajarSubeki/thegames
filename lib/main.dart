@@ -25,7 +25,6 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: appRouter.rootNavigationKey,
-      theme: AppTheme.theme,
       initialRoute: Routes.home.name,
       onGenerateRoute: (RouteSettings settings) {
         return appRouter.generateRoute(settings);

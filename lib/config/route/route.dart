@@ -1,3 +1,4 @@
+import 'package:thegames/feature/game/domain/model/game.dart';
 import 'package:thegames/feature/game/presentation/page/game_detail_page.dart';
 import 'package:thegames/feature/game/presentation/page/home_page.dart';
 
@@ -23,8 +24,8 @@ class AppRoute {
       ..registerRoute(
         Routes.gameDetail,
             (_, information) {
-          final gameId = information.argument as int;
-          return GameDetailPage(gameId: gameId);
+          final game = information.argument as GameResults;
+          return GameDetailPage(game: game);
         },
       );
   }
