@@ -35,6 +35,17 @@ class Params extends Equatable {
     page,
     pageSize,
   ];
+
+  Map<String, dynamic> toJson() {
+    return {
+      'apiKey': apiKey,
+      'page': page,
+      'pageSize': pageSize,
+      'platforms': platforms,
+      'date': date,
+      'ordering': ordering,
+    };
+  }
 }
 
 class GameDetailsParams extends Equatable {
