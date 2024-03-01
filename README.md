@@ -1,9 +1,10 @@
 # Thegames
 
 Is a Flutter app using [RAWG API] https://rawg.io to display all games of PlayStation. 
+
 You can try this app using this link: https://drive.google.com/file/d/1Fg9i0mTpX4x4JdS-nybYj_yVQIr-NiWE/view?usp=sharing
 
-### Feature of project
+### Feature of Project
 - List Game with Name, Release Date, Background Image, Metacritic Score
 - Detail Game with Image Banner, Genres, Description, Screenshoots, Platform, Developers, Publishers
 - Share Feature for share data games
