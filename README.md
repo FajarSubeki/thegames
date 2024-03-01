@@ -1,3 +1,3 @@
-# thegames
+# Thegames
 
-A new Flutter project.
+Is a Flutter apps using [RAWG API](https://rawg.io) to display all games of playstation. 
