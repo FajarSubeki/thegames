@@ -16,7 +16,7 @@ class LoadingWidget extends StatelessWidget {
           color: AppColor.kPrimaryColor,
         ),
         Text(
-          'Loading...',
+          'Loading',
           style: blackTextStyle.copyWith(fontSize: 18),
           textAlign: TextAlign.center,
         )

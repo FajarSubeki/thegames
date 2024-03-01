@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:thegames/config/theme/app_color.dart';
+import 'package:thegames/config/theme/app_theme.dart';
 import 'package:thegames/feature/game/domain/model/game.dart';
 import 'package:thegames/feature/game/domain/model/game_detail.dart';
+import 'package:thegames/feature/game/presentation/page/screenshoot_page.dart';
 
 class GameDetailWidget extends StatelessWidget {
   final GameResults game;
@@ -147,6 +150,7 @@ class GameDetailWidget extends StatelessWidget {
           )),
       SliverFillRemaining(
         child: ListView(
+          padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           children: [
@@ -154,35 +158,178 @@ class GameDetailWidget extends StatelessWidget {
               children: [
                 SizedBox(
                   width: double.infinity,
-                  height: 60,
+                  height: 72,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 5, left: 5),
-                        child: Text(
+                      Text(
                           'Genres',
-                          style: TextStyle(
-                              color: Colors.white, fontSize: 16),
+                          style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      Expanded(
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: game.genres?.length,
+                              itemBuilder: (context, index) {
+                                final genre = game.genres![index];
+                                return Container(
+                                  margin: const EdgeInsets.only(top: 5, bottom: 5),
+                                  padding: const EdgeInsets.only(left: 10, right: 10),
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                      BorderRadius.circular(10),
+                                      color: AppColor.kPrimaryColor),
+                                  child: Center(child: Text(
+                                      genre.name,
+                                    style: blackTextStyle.copyWith(color: Colors.white),
+                                  )),
+                                );
+                              })),
+                    ],
+                  ),
+                ),
+               Container(
+                 margin: const EdgeInsets.only(top: 8),
+                 child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     Text(
+                       'Description',
+                       style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+                     ),
+                     const SizedBox(
+                       height: 5,
+                     ),
+                     Text(
+                       gameDetails.descriptionRaw!,
+                       style: blackTextStyle,
+                       textAlign: TextAlign.justify,
+                       maxLines: 9,
+                       overflow: TextOverflow.ellipsis,
+                     ),
+                   ],
+                 ),
+               ),
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  width: double.infinity,
+                  height: 200,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5, left: 5),
+                        child: Text(
+                          'Screenshots',
+                          style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      // Expanded(
-                      //     child: ListView.builder(
-                      //         scrollDirection: Axis.horizontal,
-                      //         itemCount: game.genres?.length,
-                      //         itemBuilder: (context, index) {
-                      //           final genre = game.genres![index];
-                      //           return Container(
-                      //             margin: const EdgeInsets.all(5),
-                      //             padding: const EdgeInsets.all(5),
-                      //             decoration: BoxDecoration(
-                      //                 borderRadius:
-                      //                 BorderRadius.circular(5),
-                      //                 color: AppColor.kDarkGreyColor),
-                      //             child: Center(child: Text(genre.name)),
-                      //           );
-                      //         })),
+                      Expanded(
+                        child: Container(
+                          margin: const EdgeInsets.only(top: 5),
+                          child: CarouselSlider(
+                            options: CarouselOptions(
+                              height: 150,
+                              autoPlay: true,
+                              autoPlayInterval: const Duration(seconds: 3),
+                              autoPlayAnimationDuration:
+                              const Duration(milliseconds: 800),
+                              autoPlayCurve: Curves.fastOutSlowIn,
+                              enlargeCenterPage: true,
+                              scrollDirection: Axis.horizontal,
+                            ),
+                            items: game.shortScreenshots?.map((i) {
+                              return Builder(
+                                builder: (BuildContext context) {
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ScreenshotsPage(
+                                                  screenshot: i.image),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      width:
+                                      MediaQuery.of(context).size.width,
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 5.0),
+                                      decoration: const BoxDecoration(
+                                        color: AppColor.kDarkGreyColor,
+                                      ),
+                                      child: Image.network(
+                                        i.image,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 170,
+                  margin: const EdgeInsets.only(top: 5),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: Text(
+                          'Developers',
+                          style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: gameDetails.developers!.length,
+                          itemBuilder: (context, index) {
+                            final developer =
+                            gameDetails.developers![index];
+                            return Container(
+                                width: 90,
+                                padding: const EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Column(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.start,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 40,
+                                      backgroundImage: NetworkImage(
+                                          developer.imageBackground),
+                                    ),
+                                    const Spacer(),
+                                    Expanded(
+                                      child: Text(
+                                        developer.name,
+                                        style: blackTextStyle.copyWith(fontSize: 13, overflow: TextOverflow.ellipsis,fontWeight: bold),
+                                        textAlign: TextAlign.center,
+                                        maxLines: 2,
+                                        softWrap: true,
+                                      ),
+                                    )
+                                  ],
+                                ));
+                          },
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                     ],
                   ),
                 ),

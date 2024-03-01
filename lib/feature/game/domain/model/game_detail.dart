@@ -11,6 +11,7 @@ class GameDetails extends Equatable {
   final String? descriptionRaw;
   final int? metaCritic;
   final String? released;
+  final List<Developers>? developers;
 
   const GameDetails(
       {required this.id,
@@ -22,7 +23,8 @@ class GameDetails extends Equatable {
         this.creatorsCount,
         this.metaCritic,
         this.released,
-        this.descriptionRaw
+        this.descriptionRaw,
+        this.developers
       });
 
   @override
@@ -36,6 +38,20 @@ class GameDetails extends Equatable {
     creatorsCount,
     descriptionRaw,
     metaCritic,
-    released
+    released,
+    developers
   ];
+}
+
+class Developers extends Equatable {
+  final int id;
+  final String name;
+  final String slug;
+  final int gamesCount;
+  final String imageBackground;
+
+  const Developers({required this.id, required this.name, required this.slug, required this.gamesCount, required this.imageBackground});
+
+  @override
+  List<Object?> get props => [id, name, slug, gamesCount, imageBackground];
 }

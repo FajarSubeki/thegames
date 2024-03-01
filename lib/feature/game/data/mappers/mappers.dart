@@ -15,7 +15,9 @@ GameResults fromResultResponseToDomain(Results results){
       suggestionsCount: results.suggestionsCount!,
       updated: results.updated!,
       reviewsCount: results.reviewsCount!,
-      metaCritic: results.metaCritic ?? 0
+      metaCritic: results.metaCritic ?? 0,
+      genres: results.genres,
+      shortScreenshots: results.shortScreenshots
   );
 }
 
@@ -28,6 +30,7 @@ GameDetails fromGameDetailsResponseToDomain(GameDetailsResponse response){
       descriptionRaw: response.descriptionRaw!,
       description: response.description!,
       website: response.website!,
-      creatorsCount: response.creatorsCount!
+      creatorsCount: response.creatorsCount!,
+      developers: response.developers,
   );
 }

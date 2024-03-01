@@ -12,6 +12,8 @@ class GameResults extends Equatable {
   final String? updated;
   final int? reviewsCount;
   final int? metaCritic;
+  final List<GenresResult>? genres;
+  final List<ShortScreenshotsResults>? shortScreenshots;
 
   const GameResults(
       {this.id,
@@ -25,6 +27,8 @@ class GameResults extends Equatable {
         this.updated,
         this.reviewsCount,
         this.metaCritic,
+        this.genres,
+        this.shortScreenshots
       });
 
   @override
@@ -39,9 +43,40 @@ class GameResults extends Equatable {
     suggestionsCount,
     updated,
     reviewsCount,
-    metaCritic
+    metaCritic,
+    genres,
+    shortScreenshots,
   ];
 
   @override
   bool get stringify => true;
+}
+
+class GenresResult extends Equatable {
+  final int id;
+  final String name;
+  final String slug;
+
+  const GenresResult({
+    required this.id,
+    required this.name,
+    required this.slug
+  });
+
+  @override
+  List<Object?> get props => [id, name, slug];
+
+  @override
+  bool get stringify => true;
+}
+
+class ShortScreenshotsResults extends Equatable {
+  final int id;
+  final String image;
+
+  const ShortScreenshotsResults({required this.id, required this.image});
+
+  @override
+  List<Object?> get props => [id, image];
+
 }
