@@ -49,9 +49,9 @@ class GameDetails extends Equatable {
 class Developers extends Equatable {
   final int id;
   final String name;
-  final String imageBackground;
+  final String? imageBackground;
 
-  const Developers({required this.id, required this.name, required this.imageBackground});
+  const Developers({required this.id, required this.name, this.imageBackground});
 
   @override
   List<Object?> get props => [id, name, imageBackground];
@@ -60,9 +60,9 @@ class Developers extends Equatable {
 class Publisher extends Equatable {
   final int id;
   final String name;
-  final String imageBackground;
+  final String? imageBackground;
 
-  const Publisher({required this.id, required this.name, required this.imageBackground});
+  const Publisher({required this.id, required this.name, this.imageBackground});
 
   @override
   List<Object?> get props => [id, name, imageBackground];

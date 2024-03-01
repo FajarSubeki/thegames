@@ -55,7 +55,7 @@ class GameDetailWidget extends StatelessWidget {
                     height: 100,
                     width: 100,
                     decoration:  BoxDecoration(
-                        color: Colors.white.withOpacity(0.1), // Adjust the opacity as needed
+                        color: Colors.black.withOpacity(0.1), // Adjust the opacity as needed
                     )
                   )
                 ),
@@ -117,7 +117,7 @@ class GameDetailWidget extends StatelessWidget {
                                     gameDetails.name,
                                     style: const TextStyle(
                                       color: Colors.white,
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       fontWeight: FontWeight.bold,
                                       shadows: [
                                         Shadow(
@@ -348,7 +348,7 @@ class GameDetailWidget extends StatelessWidget {
                                         CircleAvatar(
                                           radius: 40,
                                           backgroundImage: NetworkImage(
-                                              developer.imageBackground),
+                                              developer.imageBackground ?? ''),
                                         ),
                                         const Spacer(),
                                         Expanded(
@@ -407,7 +407,7 @@ class GameDetailWidget extends StatelessWidget {
                                         CircleAvatar(
                                           radius: 40,
                                           backgroundImage: NetworkImage(
-                                              publisher.imageBackground),
+                                              publisher.imageBackground ?? ''),
                                         ),
                                         const Spacer(),
                                         Expanded(
