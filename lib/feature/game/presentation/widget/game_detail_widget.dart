@@ -12,8 +12,7 @@ class GameDetailWidget extends StatelessWidget {
   final GameResults game;
   final GameDetails gameDetails;
 
-  GameDetailWidget({Key? key, required this.game, required this.gameDetails})
-      : super(key: key);
+  GameDetailWidget({super.key, required this.game, required this.gameDetails});
 
   BuildContext? blocContext;
 
@@ -156,38 +155,41 @@ class GameDetailWidget extends StatelessWidget {
           children: [
             Column(
               children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 72,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                          'Genres',
-                          style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      Expanded(
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: game.genres?.length,
-                              itemBuilder: (context, index) {
-                                final genre = game.genres![index];
-                                return Container(
-                                  margin: const EdgeInsets.only(top: 5, bottom: 5, right: 5),
-                                  padding: const EdgeInsets.only(left: 10, right: 10),
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                      BorderRadius.circular(10),
-                                      color: AppColor.kPrimaryColor),
-                                  child: Center(child: Text(
-                                      genre.name,
-                                    style: blackTextStyle.copyWith(color: Colors.white),
-                                  )),
-                                );
-                              })),
-                    ],
-                  ),
+                Visibility(
+                  visible: game.genres != null && game.genres!.isNotEmpty,
+                  child: SizedBox(
+                      width: double.infinity,
+                      height: 72,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Genres',
+                            style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          Expanded(
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: game.genres?.length,
+                                  itemBuilder: (context, index) {
+                                    final genre = game.genres![index];
+                                    return Container(
+                                      margin: const EdgeInsets.only(top: 5, bottom: 5, right: 5),
+                                      padding: const EdgeInsets.only(left: 10, right: 10),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                          BorderRadius.circular(10),
+                                          color: AppColor.kPrimaryColor),
+                                      child: Center(child: Text(
+                                        genre.name,
+                                        style: blackTextStyle.copyWith(color: Colors.white),
+                                      )),
+                                    );
+                                  })),
+                        ],
+                      ),
+                    ),
                 ),
                 Container(
                  margin: const EdgeInsets.only(top: 8),
@@ -211,216 +213,229 @@ class GameDetailWidget extends StatelessWidget {
                    ],
                  ),
                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 8, bottom: 10),
-                  width: double.infinity,
-                  height: 200,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5, left: 5),
-                        child: Text(
-                          'Screenshots',
-                          style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.only(top: 5),
-                          child: CarouselSlider(
-                            options: CarouselOptions(
-                              height: 150,
-                              autoPlay: true,
-                              autoPlayInterval: const Duration(seconds: 3),
-                              autoPlayAnimationDuration:
-                              const Duration(milliseconds: 800),
-                              autoPlayCurve: Curves.fastOutSlowIn,
-                              enlargeCenterPage: true,
-                              scrollDirection: Axis.horizontal,
+                Visibility(
+                  visible: game.shortScreenshots != null && game.shortScreenshots!.isNotEmpty,
+                  child:
+                    Container(
+                      margin: const EdgeInsets.only(top: 8, bottom: 10),
+                      width: double.infinity,
+                      height: 200,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5, left: 5),
+                            child: Text(
+                              'Screenshots',
+                              style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
                             ),
-                            items: game.shortScreenshots?.map((i) {
-                              return Builder(
-                                builder: (BuildContext context) {
-                                  return InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              ScreenshotsPage(
-                                                  screenshot: i.image),
+                          ),
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 5),
+                              child: CarouselSlider(
+                                options: CarouselOptions(
+                                  height: 150,
+                                  autoPlay: true,
+                                  autoPlayInterval: const Duration(seconds: 3),
+                                  autoPlayAnimationDuration:
+                                  const Duration(milliseconds: 800),
+                                  autoPlayCurve: Curves.fastOutSlowIn,
+                                  enlargeCenterPage: true,
+                                  scrollDirection: Axis.horizontal,
+                                ),
+                                items: game.shortScreenshots?.map((i) {
+                                  return Builder(
+                                    builder: (BuildContext context) {
+                                      return InkWell(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ScreenshotsPage(
+                                                      screenshot: i.image),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          width:
+                                          MediaQuery.of(context).size.width,
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 5.0),
+                                          decoration: const BoxDecoration(
+                                            color: AppColor.kDarkGreyColor,
+                                          ),
+                                          child: Image.network(
+                                            i.image,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       );
                                     },
-                                    child: Container(
-                                      width:
-                                      MediaQuery.of(context).size.width,
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 5.0),
-                                      decoration: const BoxDecoration(
-                                        color: AppColor.kDarkGreyColor,
-                                      ),
-                                      child: Image.network(
-                                        i.image,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
                                   );
-                                },
-                              );
-                            }).toList(),
+                                }).toList(),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                ),
+                Visibility(
+                  visible: game.platforms != null && game.platforms!.isNotEmpty,
+                  child: SizedBox(
+                      width: double.infinity,
+                      height: 72,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Platform',
+                            style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 72,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Platform',
-                        style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+                          Expanded(
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: game.platforms?.length,
+                                  itemBuilder: (context, index) {
+                                    final platform = game.platforms![index];
+                                    return Container(
+                                      margin: const EdgeInsets.only(top: 5, bottom: 5, right: 5),
+                                      padding: const EdgeInsets.only(left: 10, right: 10),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                          BorderRadius.circular(10),
+                                          color: AppColor.kPrimaryColor),
+                                      child: Center(child: Text(
+                                        platform.platform?.name ?? '',
+                                        style: blackTextStyle.copyWith(color: Colors.white),
+                                      )),
+                                    );
+                                  })),
+                        ],
                       ),
-                      Expanded(
-                          child: ListView.builder(
+                    ),
+                ),
+                Visibility(
+                  visible: gameDetails.developers != null && gameDetails.developers!.isNotEmpty,
+                  child: Container(
+                      width: double.infinity,
+                      height: 170,
+                      margin: const EdgeInsets.only(top: 8),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 5),
+                            child: Text(
+                              'Developers',
+                              style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Expanded(
+                            child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: game.platforms?.length,
+                              itemCount: gameDetails.developers!.length,
                               itemBuilder: (context, index) {
-                                final platform = game.platforms![index];
+                                final developer =
+                                gameDetails.developers![index];
                                 return Container(
-                                  margin: const EdgeInsets.only(top: 5, bottom: 5, right: 5),
-                                  padding: const EdgeInsets.only(left: 10, right: 10),
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                      BorderRadius.circular(10),
-                                      color: AppColor.kPrimaryColor),
-                                  child: Center(child: Text(
-                                    platform.platform?.name ?? '',
-                                    style: blackTextStyle.copyWith(color: Colors.white),
-                                  )),
-                                );
-                              })),
-                    ],
-                  ),
+                                    width: 90,
+                                    padding: const EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.start,
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 40,
+                                          backgroundImage: NetworkImage(
+                                              developer.imageBackground),
+                                        ),
+                                        const Spacer(),
+                                        Expanded(
+                                          child: Text(
+                                            developer.name,
+                                            style: blackTextStyle.copyWith(fontSize: 13, overflow: TextOverflow.ellipsis,fontWeight: bold),
+                                            textAlign: TextAlign.center,
+                                            maxLines: 2,
+                                            softWrap: true,
+                                          ),
+                                        )
+                                      ],
+                                    ));
+                              },
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
+                    ),
                 ),
-                Container(
-                  width: double.infinity,
-                  height: 170,
-                  margin: const EdgeInsets.only(top: 8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 5),
-                        child: Text(
-                          'Developers',
-                          style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
+                Visibility(
+                  visible: gameDetails.publisher != null && gameDetails.publisher!.isNotEmpty,
+                  child: SizedBox(
+                      width: double.infinity,
+                      height: 170,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 5),
+                            child: Text(
+                              'Publishers',
+                              style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Expanded(
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: gameDetails.publisher!.length,
+                              itemBuilder: (context, index) {
+                                final publisher =
+                                gameDetails.publisher![index];
+                                return Container(
+                                    width: 90,
+                                    padding: const EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.start,
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 40,
+                                          backgroundImage: NetworkImage(
+                                              publisher.imageBackground),
+                                        ),
+                                        const Spacer(),
+                                        Expanded(
+                                          child: Text(
+                                            publisher.name,
+                                            style: blackTextStyle.copyWith(fontSize: 13, overflow: TextOverflow.ellipsis,fontWeight: bold),
+                                            textAlign: TextAlign.center,
+                                            maxLines: 2,
+                                            softWrap: true,
+                                          ),
+                                        ),
+                                      ],
+                                    ));
+                              },
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                        ],
                       ),
-                      Expanded(
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: gameDetails.developers!.length,
-                          itemBuilder: (context, index) {
-                            final developer =
-                            gameDetails.developers![index];
-                            return Container(
-                                width: 90,
-                                padding: const EdgeInsets.all(3),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.start,
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 40,
-                                      backgroundImage: NetworkImage(
-                                          developer.imageBackground),
-                                    ),
-                                    const Spacer(),
-                                    Expanded(
-                                      child: Text(
-                                        developer.name,
-                                        style: blackTextStyle.copyWith(fontSize: 13, overflow: TextOverflow.ellipsis,fontWeight: bold),
-                                        textAlign: TextAlign.center,
-                                        maxLines: 2,
-                                        softWrap: true,
-                                      ),
-                                    )
-                                  ],
-                                ));
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 170,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 5),
-                        child: Text(
-                          'Publishers',
-                          style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: gameDetails.publisher!.length,
-                          itemBuilder: (context, index) {
-                            final publisher =
-                            gameDetails.publisher![index];
-                            return Container(
-                                width: 90,
-                                padding: const EdgeInsets.all(3),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.start,
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 40,
-                                      backgroundImage: NetworkImage(
-                                          publisher.imageBackground),
-                                    ),
-                                    const Spacer(),
-                                    Expanded(
-                                      child: Text(
-                                        publisher.name,
-                                        style: blackTextStyle.copyWith(fontSize: 13, overflow: TextOverflow.ellipsis,fontWeight: bold),
-                                        textAlign: TextAlign.center,
-                                        maxLines: 2,
-                                        softWrap: true,
-                                      ),
-                                    ),
-                                  ],
-                                ));
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                    ],
-                  ),
+                    ),
                 ),
               ],
             )
