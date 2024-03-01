@@ -28,9 +28,9 @@ The architecture is divided into 3 layers:
   ## Layers.
 
 ### 1. Domain.
-This is the core layer of the application. The ```domain``` layer is independent of any other layers thus ] domain models and business logic can be independent from other layers.This means that changes in other layers will have no effect on domain layer eg.  screen UI (presentation layer) or changing database (data layer) will not result in any code change withing domain layer.
+This is the core layer of the application. The ```domain``` layer is independent of any other layers thus ] domain models and business logic can be independent from other layers. This means that changes in other layers will not affect the domain layer eg.  screen UI (presentation layer) or changing database (data layer) will not result in any code change within the domain layer.
 
-Components of domain layer include:
+Components of the domain layer include:
 - __Models__: Defines the core structure of the data that will be used within the application.
 
 - __Repositories__: Interfaces used by the use cases. Implemented in the data layer.
@@ -38,9 +38,9 @@ Components of domain layer include:
 - __Use cases/Interactors__: They enclose a single action, like getting data from a database or posting to a service. They use the repositories to resolve the action they are supposed to do. They usually override the operator “invoke”, so they can be called as a function.
 
 ### 2. Data.
-The ```data``` layer is responsibile for selecting the proper data source for the domain layer. It contains the implementations of the repositories declared in the domain layer. 
+The ```data``` layer is responsible for selecting the proper data source for the domain layer. It contains the implementations of the repositories declared in the domain layer. 
 
-Components of data layer include:
+Components of the data layer include:
 - __Models__
 
     -__Dto Models__: Defines POJO of network responses.
@@ -71,11 +71,17 @@ The ```presentation``` layer contains components involved in showing information
 - [block_test](https://pub.dev/packages/bloc_test): A testing library that makes it easy to test blocs and cubits.
 - [dartz](https://pub.dev/packages/dartz): Functional programming in Dart.
 - [get_it](https://pub.dev/packages/get_it): A simple Service Locator for Dart and Flutter projects with some additional goodies.
-- [flutter_spinkit](https://pub.dev/packages/flutter_spinkit) : A collection of loading indicators animated with flutter. Heavily inspired by @tobiasahlin's SpinKit.
-- [google_fonts](https://pub.dev/packages/google_fonts) : A Flutter package to use fonts from fonts.google.com
-- [share_plus](https://pub.dev/packages/share_plus) : Flutter plugin for sharing content via the platform share UI, using the ACTION_SEND intent on Android and UIActivityViewController on iOS.
-- [carousel_slider](https://pub.dev/packages/carousel_slider) : A carousel slider widget, support infinite scroll and custom child widget.
-- [infinite_scroll_pagination](https://pub.dev/packages/infinite_scroll_pagination) : Lazily load and display pages of items as the user scrolls down your screen.
+- [flutter_spinkit](https://pub.dev/packages/flutter_spinkit): A collection of loading indicators animated with flutter. Heavily inspired by @tobiasahlin's SpinKit.
+- [google_fonts](https://pub.dev/packages/google_fonts): A Flutter package to use fonts from fonts.google.com
+- [share_plus](https://pub.dev/packages/share_plus): Flutter plugin for sharing content via the platform share UI, using the ACTION_SEND intent on Android and UIActivityViewController on iOS.
+- [carousel_slider](https://pub.dev/packages/carousel_slider): A carousel slider widget, support infinite scroll and custom child widget.
+- [infinite_scroll_pagination](https://pub.dev/packages/infinite_scroll_pagination): Lazily load and display pages of items as the user scrolls down your screen.
 
 ## Screenshots
+
+<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/loading.png" width="256">&nbsp;&nbsp;
+<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/list_game.png" width="256">&nbsp;&nbsp;
+<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/detail_game.png" width="256">&nbsp;&nbsp;
+<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/detail_game2.png" width="256">&nbsp;&nbsp;
+<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/share_game.png?raw=true" width="256">&nbsp;&nbsp;
 
