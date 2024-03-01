@@ -26,6 +26,8 @@ class _GameWidgetState extends State<GameWidget> {
 
   double scrollPosition = 0;
 
+  bool isScroll = false;
+
   @override
   void initState() {
     super.initState();
@@ -65,6 +67,10 @@ class _GameWidgetState extends State<GameWidget> {
           if (scrollNotification is ScrollEndNotification &&
               scrollNotification.metrics.extentAfter == 0) {
             jumpToScrollPosition();
+            // if(!isScroll){
+            //   isScroll = true;
+            //   jumpToScrollPosition();
+            // }
             BlocProvider.of<GamesBloc>(context).add(GetGamesEvent());
           }
           return false;

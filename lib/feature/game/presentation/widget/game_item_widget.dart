@@ -16,6 +16,7 @@ class GameItemWidget extends StatelessWidget {
         Navigator.pushNamed(context, Routes.gameDetail.name, arguments: game);
       },
       child: Container(
+        margin: EdgeInsets.zero,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),

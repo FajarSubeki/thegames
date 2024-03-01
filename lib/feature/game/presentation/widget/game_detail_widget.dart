@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:thegames/config/theme/app_color.dart';
 import 'package:thegames/config/theme/app_theme.dart';
@@ -23,20 +24,15 @@ class GameDetailWidget extends StatelessWidget {
     );
   }
 
-  PreferredSizeWidget buildAppBar() {
-    return AppBar(
-        title: Container(
-      margin: const EdgeInsets.only(top: 10),
-      child: const Text('Games'),
-    ));
-  }
-
   Widget buildBody(BuildContext context) {
     return CustomScrollView(shrinkWrap: true, slivers: [
       SliverAppBar(
           pinned: true,
-          title: Text(gameDetails.name),
+          title: Text(
+            gameDetails.name,
+            style: blackTextStyle),
           actions: buildAppBarActions(context),
+          iconTheme: const IconThemeData(color: Colors.black), // Set back icon color
           expandedHeight: 270.0,
           flexibleSpace: FlexibleSpaceBar(
             background: Stack(
@@ -58,12 +54,10 @@ class GameDetailWidget extends StatelessWidget {
                   child: Container(
                     height: 100,
                     width: 100,
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [AppColor.kDarkGreyColor, Colors.transparent])),
-                  ),
+                    decoration:  BoxDecoration(
+                        color: Colors.white.withOpacity(0.1), // Adjust the opacity as needed
+                    )
+                  )
                 ),
                 Positioned(
                     top: 150,
@@ -123,7 +117,7 @@ class GameDetailWidget extends StatelessWidget {
                                     gameDetails.name,
                                     style: const TextStyle(
                                       color: Colors.white,
-                                      fontSize: 10,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.bold,
                                       shadows: [
                                         Shadow(
