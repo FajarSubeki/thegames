@@ -1,6 +1,14 @@
 # Thegames
 
-Is a Flutter apps using [RAWG API] https://rawg.io to display all games of playstation. 
+Is a Flutter app using [RAWG API] https://rawg.io to display all games of PlayStation. 
+You can try this app using this link: https://drive.google.com/file/d/1Fg9i0mTpX4x4JdS-nybYj_yVQIr-NiWE/view?usp=sharing
+
+### Feature of project
+- List Game with Name, Release Date, Background Image, Metacritic Score
+- Detail Game with Image Banner, Genres, Description, Screenshoots, Platform, Developers, Publishers
+- Share Feature for share data games
+- Carousel slider of screenshoot
+- Pagination
 
 ### How To Run This Project
 
@@ -9,9 +17,17 @@ Is a Flutter apps using [RAWG API] https://rawg.io to display all games of plays
   ```bash
   git clone https://github.com/FajarSubeki/thegames.git
   ```
-- For can connect to API you need to change the api key in `contants.dart`. You can generate api key in (https://rawg-api.com/api).
+- To connect to the API you need to change the API key in `contants.dart`. You can generate API key at (https://rawg-api.com/api).
 - Run `flutter pub get` to install all the dependencies
 - Run `flutter run` to run the app on your device or emulator
+
+## Screenshots
+
+<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/loading.png" width="256">&nbsp;&nbsp;
+<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/list_game.png" width="256">&nbsp;&nbsp;
+<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/detail_game.png" width="256">&nbsp;&nbsp;
+<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/detail_game2.png" width="256">&nbsp;&nbsp;
+<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/share_game.png?raw=true" width="256">&nbsp;&nbsp;
 
 ### Clean Architecture
 
@@ -76,12 +92,4 @@ The ```presentation``` layer contains components involved in showing information
 - [share_plus](https://pub.dev/packages/share_plus): Flutter plugin for sharing content via the platform share UI, using the ACTION_SEND intent on Android and UIActivityViewController on iOS.
 - [carousel_slider](https://pub.dev/packages/carousel_slider): A carousel slider widget, support infinite scroll and custom child widget.
 - [infinite_scroll_pagination](https://pub.dev/packages/infinite_scroll_pagination): Lazily load and display pages of items as the user scrolls down your screen.
-
-## Screenshots
-
-<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/loading.png" width="256">&nbsp;&nbsp;
-<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/list_game.png" width="256">&nbsp;&nbsp;
-<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/detail_game.png" width="256">&nbsp;&nbsp;
-<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/detail_game2.png" width="256">&nbsp;&nbsp;
-<img src="https://github.com/FajarSubeki/thegames/blob/main/assets/screenshoot/share_game.png?raw=true" width="256">&nbsp;&nbsp;
 
