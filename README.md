@@ -5,6 +5,7 @@ Is a Flutter apps using [RAWG API](https://rawg.io) to display all games of play
 ### How To Run This Project
 
 - Clone this repository
+  
   ```bash
   git clone https://github.com/FajarSubeki/thegames.git
   ```
