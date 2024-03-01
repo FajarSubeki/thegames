@@ -38,10 +38,7 @@ class GameDetailPage extends StatelessWidget {
               return const Center(child: LoadingWidget());
             } else if (state is GameDetailsLoadedState) {
               final gameDetails = state.gameDetails;
-              return GameDetailWidget(
-                gameDetails: gameDetails,
-                game: game
-              );
+              return GameDetailWidget(gameDetails: gameDetails, game: game);
             } else if (state is GameDetailsErrorState) {
               return ErrorMessageWidget(message: state.message);
             } else {

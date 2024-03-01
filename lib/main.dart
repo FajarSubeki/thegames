@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:thegames/config/route/app_router.dart';
 import 'package:thegames/config/route/route.dart';
-import 'package:thegames/config/theme/app_theme.dart';
+
 import 'injector.dart' as di;
 import 'injector.dart';
 
@@ -18,7 +17,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final appRouter = sl<AppRouter>();
     AppRoute.initializeAllRoutes(appRouter);
 

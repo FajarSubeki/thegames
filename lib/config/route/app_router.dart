@@ -1,13 +1,13 @@
-import 'route.dart';
-import 'route_definition.dart';
 import 'package:flutter/material.dart';
 
+import 'route.dart';
+import 'route_definition.dart';
 import 'route_info.dart';
 
 typedef RouteBuilder = Widget Function(
-    BuildContext context,
-    RouteInfo information,
-    );
+  BuildContext context,
+  RouteInfo information,
+);
 
 class AppRouter {
   GlobalKey<NavigatorState> rootNavigationKey = GlobalKey<NavigatorState>();
@@ -20,9 +20,9 @@ class AppRouter {
       return MaterialPageRoute(
         builder: (context) {
           return _routerRegistry[route]?.call(
-            context,
-            RouteInfo(argument: settings.arguments),
-          ) ??
+                context,
+                RouteInfo(argument: settings.arguments),
+              ) ??
               const SizedBox.shrink();
         },
         settings: settings,

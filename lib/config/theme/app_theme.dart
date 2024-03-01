@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:thegames/config/theme/app_color.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:thegames/config/theme/app_color.dart';
 
 TextStyle blackTextStyle = GoogleFonts.poppins(color: AppColor.kBlackColor);
 TextStyle whiteTextStyle = GoogleFonts.poppins(color: Colors.white);
 
-TextStyle primaryTextStyle =
-GoogleFonts.poppins(color: AppColor.kPrimaryColor);
+TextStyle primaryTextStyle = GoogleFonts.poppins(color: AppColor.kPrimaryColor);
 TextStyle secondaryTextStyle =
-GoogleFonts.poppins(color: AppColor.kSecondaryColor);
+    GoogleFonts.poppins(color: AppColor.kSecondaryColor);
 TextStyle interTextStyle = GoogleFonts.inter(color: AppColor.kPrimaryColor);
 
 FontWeight light = FontWeight.w300;

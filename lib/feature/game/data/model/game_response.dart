@@ -15,28 +15,28 @@ class GamesResponse {
     return GamesResponse(
         next: json['next'],
         previous: json['previous'],
-        results: json['results'] != null ? (json['results'] as List).map((e) => Results.fromJson(e)).toList() : null);
+        results: json['results'] != null
+            ? (json['results'] as List).map((e) => Results.fromJson(e)).toList()
+            : null);
   }
 }
 
 class Results extends GameResults {
-
   const Results(
       {required super.id,
-        required super.name,
-        required super.released,
-        required super.backgroundImage,
-        required super.rating,
-        required super.ratingsCount,
-        required super.reviewsTextCount,
-        required super.suggestionsCount,
-        required super.updated,
-        required super.reviewsCount,
-        required super.platforms,
-        required super.genres,
-        required super.metaCritic,
-        required super.shortScreenshots
-      });
+      required super.name,
+      required super.released,
+      required super.backgroundImage,
+      required super.rating,
+      required super.ratingsCount,
+      required super.reviewsTextCount,
+      required super.suggestionsCount,
+      required super.updated,
+      required super.reviewsCount,
+      required super.platforms,
+      required super.genres,
+      required super.metaCritic,
+      required super.shortScreenshots});
 
   factory Results.fromJson(Map<String, dynamic> json) {
     return Results(
@@ -53,16 +53,16 @@ class Results extends GameResults {
       reviewsCount: json['reviews_count'],
       platforms: json['platforms'] != null
           ? (json['platforms'] as List)
-          .map((i) => Platforms.fromJson(i))
-          .toList()
+              .map((i) => Platforms.fromJson(i))
+              .toList()
           : null,
       genres: json['genres'] != null
           ? (json['genres'] as List).map((i) => Genres.fromJson(i)).toList()
           : null,
       shortScreenshots: json['short_screenshots'] != null
           ? (json['short_screenshots'] as List)
-          .map((i) => ShortScreenshots.fromJson(i))
-          .toList()
+              .map((i) => ShortScreenshots.fromJson(i))
+              .toList()
           : null,
     );
   }
@@ -71,43 +71,37 @@ class Results extends GameResults {
 class Platforms extends PlatformsResults {
   const Platforms({
     required Platform? platform,
-  }): super(
-      platform: platform,
-  );
+  }) : super(
+          platform: platform,
+        );
 
   factory Platforms.fromJson(Map<String, dynamic> json) {
     return Platforms(
-      platform: json['platform'] != null ? Platform.fromJson(json['platform']) : null
-    );
+        platform: json['platform'] != null
+            ? Platform.fromJson(json['platform'])
+            : null);
   }
 }
 
 class Platform extends PlatformResult {
-  const Platform(
-      {required super.id,
-        required super.name,});
+  const Platform({
+    required super.id,
+    required super.name,
+  });
 
   factory Platform.fromJson(Map<String, dynamic> json) {
     return Platform(
-        id: json['id'],
-        name: json['name'],
+      id: json['id'],
+      name: json['name'],
     );
   }
 }
 
 class Genres extends GenresResult {
-
-  const Genres(
-      {required super.id,
-        required super.name,
-        required super.slug});
+  const Genres({required super.id, required super.name, required super.slug});
 
   factory Genres.fromJson(Map<String, dynamic> json) {
-    return Genres(
-        id: json['id'],
-        name: json['name'],
-        slug: json['slug']
-    );
+    return Genres(id: json['id'], name: json['name'], slug: json['slug']);
   }
 }
 

@@ -3,7 +3,7 @@ import 'package:thegames/feature/game/data/model/game_response.dart';
 import 'package:thegames/feature/game/domain/model/game.dart';
 import 'package:thegames/feature/game/domain/model/game_detail.dart';
 
-GameResults fromResultResponseToDomain(Results results){
+GameResults fromResultResponseToDomain(Results results) {
   return GameResults(
       id: results.id!,
       name: results.name!,
@@ -18,11 +18,10 @@ GameResults fromResultResponseToDomain(Results results){
       metaCritic: results.metaCritic ?? 0,
       platforms: results.platforms,
       genres: results.genres,
-      shortScreenshots: results.shortScreenshots
-  );
+      shortScreenshots: results.shortScreenshots);
 }
 
-GameDetails fromGameDetailsResponseToDomain(GameDetailsResponse response){
+GameDetails fromGameDetailsResponseToDomain(GameDetailsResponse response) {
   return GameDetails(
       id: response.id,
       name: response.name,
@@ -33,6 +32,5 @@ GameDetails fromGameDetailsResponseToDomain(GameDetailsResponse response){
       website: response.website!,
       creatorsCount: response.creatorsCount!,
       developers: response.developers,
-      publisher: response.publisher
-  );
+      publisher: response.publisher);
 }

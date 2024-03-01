@@ -18,7 +18,7 @@ class GameDetailsRemoteDatasourceImpl implements GameDetailsRemoteDataSource {
       {required int id, required String key}) async {
     try {
       final response =
-      await dio.get('${Constants.kBaserUrl}games/$id?key=$key');
+          await dio.get('${Constants.kBaserUrl}games/$id?key=$key');
       return GameDetailsResponse.fromJson(response.data);
     } catch (exception) {
       throw ServerException(message: exception.toString());

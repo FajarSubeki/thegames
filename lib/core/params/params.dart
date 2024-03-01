@@ -31,10 +31,10 @@ class Params extends Equatable {
 
   @override
   List<Object?> get props => [
-    apiKey,
-    page,
-    pageSize,
-  ];
+        apiKey,
+        page,
+        pageSize,
+      ];
 
   Map<String, dynamic> toJson() {
     return {
@@ -60,8 +60,8 @@ class GameDetailsParams extends Equatable {
   });
   @override
   List<Object?> get props => [
-    apiKey,
-    id,
-    ids,
-  ];
+        apiKey,
+        id,
+        ids,
+      ];
 }

@@ -18,38 +18,37 @@ class GameResults extends Equatable {
 
   const GameResults(
       {this.id,
-        this.name,
-        this.released,
-        required this.backgroundImage,
-        required this.rating,
-        required this.ratingsCount,
-        required this.reviewsTextCount,
-        this.suggestionsCount,
-        this.updated,
-        this.reviewsCount,
-        this.metaCritic,
-        this.platforms,
-        this.genres,
-        this.shortScreenshots
-      });
+      this.name,
+      this.released,
+      required this.backgroundImage,
+      required this.rating,
+      required this.ratingsCount,
+      required this.reviewsTextCount,
+      this.suggestionsCount,
+      this.updated,
+      this.reviewsCount,
+      this.metaCritic,
+      this.platforms,
+      this.genres,
+      this.shortScreenshots});
 
   @override
   List<Object?> get props => [
-    id,
-    name,
-    released,
-    backgroundImage,
-    rating,
-    ratingsCount,
-    reviewsTextCount,
-    suggestionsCount,
-    updated,
-    reviewsCount,
-    metaCritic,
-    platforms,
-    genres,
-    shortScreenshots,
-  ];
+        id,
+        name,
+        released,
+        backgroundImage,
+        rating,
+        ratingsCount,
+        reviewsTextCount,
+        suggestionsCount,
+        updated,
+        reviewsCount,
+        metaCritic,
+        platforms,
+        genres,
+        shortScreenshots,
+      ];
 
   @override
   bool get stringify => true;
@@ -60,11 +59,8 @@ class GenresResult extends Equatable {
   final String name;
   final String slug;
 
-  const GenresResult({
-    required this.id,
-    required this.name,
-    required this.slug
-  });
+  const GenresResult(
+      {required this.id, required this.name, required this.slug});
 
   @override
   List<Object?> get props => [id, name, slug];
@@ -81,7 +77,6 @@ class ShortScreenshotsResults extends Equatable {
 
   @override
   List<Object?> get props => [id, image];
-
 }
 
 class PlatformsResults extends Equatable {

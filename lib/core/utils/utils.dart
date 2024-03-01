@@ -17,7 +17,9 @@ String getOneYearAgoDateString() {
 
 String mapFailureToMessage(Failure failure) {
   switch (failure.runtimeType) {
-    case ServerFailure _: return Constants.serveFailureMessage;
-    default: return Constants.unexpectedFailureMessage;
+    case ServerFailure _:
+      return Constants.serveFailureMessage;
+    default:
+      return Constants.unexpectedFailureMessage;
   }
 }

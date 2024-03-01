@@ -6,7 +6,6 @@ import 'package:thegames/feature/game/presentation/widget/game_widget.dart';
 import 'package:thegames/injector.dart';
 
 class HomePage extends StatelessWidget {
-
   HomePage({super.key});
 
   BuildContext? blocContext;
@@ -47,11 +46,9 @@ class HomePage extends StatelessWidget {
         ));
   }
 
-
   void dispatchEvent(BuildContext context) {
     BlocProvider.of<GamesBloc>(context).add(GetGamesEvent());
   }
-
 }
 
 class ErrorMessageWidget extends StatelessWidget {

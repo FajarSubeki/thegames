@@ -19,11 +19,11 @@ class AppRoute {
     appRouter
       ..registerRoute(
         Routes.home,
-            (_, __) => HomePage(),
+        (_, __) => HomePage(),
       )
       ..registerRoute(
         Routes.gameDetail,
-            (_, information) {
+        (_, information) {
           final game = information.argument as GameResults;
           return GameDetailPage(game: game);
         },

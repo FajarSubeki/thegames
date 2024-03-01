@@ -6,7 +6,7 @@ abstract class GameDetailsEvent extends Equatable {
 
 class GetGameDetailsEvent extends GameDetailsEvent {
   final int id;
-  const GetGameDetailsEvent({ required this.id});
+  const GetGameDetailsEvent({required this.id});
 
   @override
   List<Object> get props => [id];

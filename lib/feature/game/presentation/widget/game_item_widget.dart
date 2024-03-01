@@ -1,9 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:thegames/config/route/route.dart';
 import 'package:thegames/config/theme/app_color.dart';
 import 'package:thegames/config/theme/app_theme.dart';
 import 'package:thegames/feature/game/domain/model/game.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class GameItemWidget extends StatelessWidget {
   const GameItemWidget({super.key, required this.game});
@@ -67,9 +67,7 @@ class GameItemWidget extends StatelessWidget {
                     child: Text(
                       game?.name ?? '',
                       style: blackTextStyle.copyWith(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: bold),
+                          color: Colors.black, fontSize: 14, fontWeight: bold),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -92,13 +90,15 @@ class GameItemWidget extends StatelessWidget {
                   Expanded(
                     child: Text(
                       'Release Date',
-                      style: blackTextStyle.copyWith(color: Colors.black, fontSize: 11),
+                      style: blackTextStyle.copyWith(
+                          color: Colors.black, fontSize: 11),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Text(
                     game?.released ?? '',
-                    style: blackTextStyle.copyWith(color: Colors.black, fontSize: 11, fontWeight: bold),
+                    style: blackTextStyle.copyWith(
+                        color: Colors.black, fontSize: 11, fontWeight: bold),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],
@@ -114,13 +114,15 @@ class GameItemWidget extends StatelessWidget {
                   Expanded(
                     child: Text(
                       'Metacritic Score',
-                      style: blackTextStyle.copyWith(color: Colors.black, fontSize: 11),
+                      style: blackTextStyle.copyWith(
+                          color: Colors.black, fontSize: 11),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Text(
                     game?.metaCritic.toString() ?? '',
-                    style: blackTextStyle.copyWith(color: Colors.black, fontSize: 11, fontWeight: bold),
+                    style: blackTextStyle.copyWith(
+                        color: Colors.black, fontSize: 11, fontWeight: bold),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],

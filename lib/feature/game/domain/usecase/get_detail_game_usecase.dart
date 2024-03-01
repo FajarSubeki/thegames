@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-
 import 'package:thegames/core/error/failure.dart';
 import 'package:thegames/core/params/params.dart';
 import 'package:thegames/core/usecase/usecase.dart';

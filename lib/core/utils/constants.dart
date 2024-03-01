@@ -8,5 +8,4 @@ class Constants {
   static const String serveFailureMessage = 'Server Failure';
   static const String unexpectedFailureMessage = 'Unexpected Failure';
   static const String noInternetMessage = 'No Internet Connection';
-
 }

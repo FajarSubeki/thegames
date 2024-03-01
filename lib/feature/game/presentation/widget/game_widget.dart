@@ -5,7 +5,6 @@ import 'package:thegames/feature/game/presentation/bloc/game_bloc/game_bloc.dart
 import 'package:thegames/feature/game/presentation/widget/game_item_widget.dart';
 
 class GameWidget extends StatefulWidget {
-
   const GameWidget({
     super.key,
     required this.games,
@@ -15,13 +14,11 @@ class GameWidget extends StatefulWidget {
   final List<GameResults?> games;
   final bool noMoreData;
 
-
   @override
   State<GameWidget> createState() => _GameWidgetState();
 }
 
 class _GameWidgetState extends State<GameWidget> {
-
   late ScrollController scrollController;
 
   double scrollPosition = 0;
@@ -95,5 +92,4 @@ class _GameWidgetState extends State<GameWidget> {
       ),
     );
   }
-
 }
