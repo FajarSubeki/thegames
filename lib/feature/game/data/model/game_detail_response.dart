@@ -14,7 +14,8 @@ class GameDetailsResponse extends GameDetails {
     required super.metaCritic,
     required super.released,
     required super.descriptionRaw,
-    required super.developers
+    required super.developers,
+    required super.publisher
   });
 
   factory GameDetailsResponse.fromJson(Map<String, dynamic> json) {
@@ -30,6 +31,7 @@ class GameDetailsResponse extends GameDetails {
       metaCritic: json['metacritic'],
       released: json['released'],
       developers: (json['developers'] as List<dynamic>).map((e) => DevelopersResponse.fromJson(e)).toList(),
+      publisher: (json['publishers'] as List<dynamic>).map((e) => PublisherResponse.fromJson(e)).toList(),
     );
   }
 }
@@ -39,8 +41,6 @@ class DevelopersResponse extends Developers {
   const DevelopersResponse({
     required super.id,
     required super.name,
-    required super.slug,
-    required super.gamesCount,
     required super.imageBackground
   });
 
@@ -48,8 +48,24 @@ class DevelopersResponse extends Developers {
     return DevelopersResponse(
       id: json['id'],
       name: json['name'],
-      slug: json['slug'],
-      gamesCount: json['games_count'],
+      imageBackground: json['image_background'],
+    );
+  }
+
+}
+
+class PublisherResponse extends Publisher {
+
+  const PublisherResponse({
+    required super.id,
+    required super.name,
+    required super.imageBackground
+  });
+
+  factory PublisherResponse.fromJson(Map<String, dynamic> json) {
+    return PublisherResponse(
+      id: json['id'],
+      name: json['name'],
       imageBackground: json['image_background'],
     );
   }

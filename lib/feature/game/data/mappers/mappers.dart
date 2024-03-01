@@ -16,6 +16,7 @@ GameResults fromResultResponseToDomain(Results results){
       updated: results.updated!,
       reviewsCount: results.reviewsCount!,
       metaCritic: results.metaCritic ?? 0,
+      platforms: results.platforms,
       genres: results.genres,
       shortScreenshots: results.shortScreenshots
   );
@@ -32,5 +33,6 @@ GameDetails fromGameDetailsResponseToDomain(GameDetailsResponse response){
       website: response.website!,
       creatorsCount: response.creatorsCount!,
       developers: response.developers,
+      publisher: response.publisher
   );
 }

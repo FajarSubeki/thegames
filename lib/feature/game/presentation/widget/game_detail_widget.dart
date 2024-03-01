@@ -174,7 +174,7 @@ class GameDetailWidget extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 final genre = game.genres![index];
                                 return Container(
-                                  margin: const EdgeInsets.only(top: 5, bottom: 5),
+                                  margin: const EdgeInsets.only(top: 5, bottom: 5, right: 5),
                                   padding: const EdgeInsets.only(left: 10, right: 10),
                                   decoration: BoxDecoration(
                                       borderRadius:
@@ -189,7 +189,7 @@ class GameDetailWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-               Container(
+                Container(
                  margin: const EdgeInsets.only(top: 8),
                  child: Column(
                    crossAxisAlignment: CrossAxisAlignment.start,
@@ -212,7 +212,7 @@ class GameDetailWidget extends StatelessWidget {
                  ),
                ),
                 Container(
-                  margin: const EdgeInsets.only(top: 8),
+                  margin: const EdgeInsets.only(top: 8, bottom: 10),
                   width: double.infinity,
                   height: 200,
                   child: Column(
@@ -276,10 +276,43 @@ class GameDetailWidget extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 72,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Platform',
+                        style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      Expanded(
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: game.platforms?.length,
+                              itemBuilder: (context, index) {
+                                final platform = game.platforms![index];
+                                return Container(
+                                  margin: const EdgeInsets.only(top: 5, bottom: 5, right: 5),
+                                  padding: const EdgeInsets.only(left: 10, right: 10),
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                      BorderRadius.circular(10),
+                                      color: AppColor.kPrimaryColor),
+                                  child: Center(child: Text(
+                                    platform.platform?.name ?? '',
+                                    style: blackTextStyle.copyWith(color: Colors.white),
+                                  )),
+                                );
+                              })),
+                    ],
+                  ),
+                ),
                 Container(
                   width: double.infinity,
                   height: 170,
-                  margin: const EdgeInsets.only(top: 5),
+                  margin: const EdgeInsets.only(top: 8),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -322,6 +355,62 @@ class GameDetailWidget extends StatelessWidget {
                                         softWrap: true,
                                       ),
                                     )
+                                  ],
+                                ));
+                          },
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 170,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: Text(
+                          'Publishers',
+                          style: blackTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: gameDetails.publisher!.length,
+                          itemBuilder: (context, index) {
+                            final publisher =
+                            gameDetails.publisher![index];
+                            return Container(
+                                width: 90,
+                                padding: const EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Column(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.start,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 40,
+                                      backgroundImage: NetworkImage(
+                                          publisher.imageBackground),
+                                    ),
+                                    const Spacer(),
+                                    Expanded(
+                                      child: Text(
+                                        publisher.name,
+                                        style: blackTextStyle.copyWith(fontSize: 13, overflow: TextOverflow.ellipsis,fontWeight: bold),
+                                        textAlign: TextAlign.center,
+                                        maxLines: 2,
+                                        softWrap: true,
+                                      ),
+                                    ),
                                   ],
                                 ));
                           },

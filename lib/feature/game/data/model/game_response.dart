@@ -32,9 +32,10 @@ class Results extends GameResults {
         required super.suggestionsCount,
         required super.updated,
         required super.reviewsCount,
-        required List<Genres>? super.genres,
+        required super.platforms,
+        required super.genres,
         required super.metaCritic,
-        required List<ShortScreenshots>? super.shortScreenshots
+        required super.shortScreenshots
       });
 
   factory Results.fromJson(Map<String, dynamic> json) {
@@ -50,6 +51,11 @@ class Results extends GameResults {
       suggestionsCount: json['suggestions_count'],
       updated: json['updated'],
       reviewsCount: json['reviews_count'],
+      platforms: json['platforms'] != null
+          ? (json['platforms'] as List)
+          .map((i) => Platforms.fromJson(i))
+          .toList()
+          : null,
       genres: json['genres'] != null
           ? (json['genres'] as List).map((i) => Genres.fromJson(i)).toList()
           : null,
@@ -58,6 +64,33 @@ class Results extends GameResults {
           .map((i) => ShortScreenshots.fromJson(i))
           .toList()
           : null,
+    );
+  }
+}
+
+class Platforms extends PlatformsResults {
+  const Platforms({
+    required Platform? platform,
+  }): super(
+      platform: platform,
+  );
+
+  factory Platforms.fromJson(Map<String, dynamic> json) {
+    return Platforms(
+      platform: json['platform'] != null ? Platform.fromJson(json['platform']) : null
+    );
+  }
+}
+
+class Platform extends PlatformResult {
+  const Platform(
+      {required super.id,
+        required super.name,});
+
+  factory Platform.fromJson(Map<String, dynamic> json) {
+    return Platform(
+        id: json['id'],
+        name: json['name'],
     );
   }
 }
